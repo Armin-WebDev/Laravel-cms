@@ -36,7 +36,7 @@ class PostEditRequest extends FormRequest
     {
         return [
             'title'=>'required|min:10',
-            'slug'=> Role::unique('psots')->ignore(request()->post),
+            'slug'=> Role::unique('posts')->ignore(request()->post),
             'description'=>'required',
             'categories'=>'required',
             'status'=>'required'

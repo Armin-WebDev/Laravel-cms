@@ -17,7 +17,7 @@
                                 <span><i class="icon-comment2 mr-2"></i>5 Comment</span>
                             </p>
                         </div>
-                        <p class="mb-4">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                        <p class="mb-4">{{ Str::limit($post->description , 45) }}.</p>
                         <p><a href="#" class="btn-custom">Read More <span class="ion-ios-arrow-forward"></span></a></p>
                     </div>
                 </div>
