@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use App\Models\Role;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class PostEditRequest extends FormRequest
 {
@@ -36,7 +37,7 @@ class PostEditRequest extends FormRequest
     {
         return [
             'title'=>'required|min:10',
-            'slug'=> Role::unique('posts')->ignore(request()->post),
+            'slug'=> Rule::unique('posts')->ignore(request()->post),
             'description'=>'required',
             'categories'=>'required',
             'status'=>'required'
