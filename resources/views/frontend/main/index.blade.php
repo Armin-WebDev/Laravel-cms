@@ -1,5 +1,8 @@
 @extends('frontend.layouts.master')
 
+@section('navigation')
+    @include('partials.navigation')
+@endsection
 
 @section('content')
     <div class="col-xl-8 py-5 px-md-5">
