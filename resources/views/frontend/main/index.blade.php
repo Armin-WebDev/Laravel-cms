@@ -46,3 +46,7 @@
         </div>
     </div>
 @endsection
+
+@section('sidebar')
+    @include('partials.sidebar' , ['categories'=>$categories])
+@endsection
