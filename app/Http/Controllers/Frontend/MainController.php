@@ -10,7 +10,9 @@ class MainController extends Controller
 {
     public function index()
     {
-        $posts = Post::with('photo' , 'user', 'category')->paginate(5);
+        $posts = Post::with('photo' , 'user', 'category')
+            ->orderBy('created_at' , 'desc')
+            ->paginate(5);
         return view('frontend.main.index' , compact(['posts']));
     }
 }
