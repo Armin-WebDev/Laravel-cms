@@ -15,6 +15,11 @@ class MainController extends Controller
             ->orderBy('created_at' , 'desc')
             ->paginate(5);
         $categories = Category::all();
-        return view('frontend.main.index' , compact(['posts' , 'categories']));
+
+        $recent_posts = Post::with('photo' , 'user')
+            ->orderBy('created_at' , 'desc')
+            ->limit(3)
+            ->get();
+        return view('frontend.main.index' , compact(['posts' , 'categories' , 'recent_posts']));
     }
 }

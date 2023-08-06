@@ -16,7 +16,7 @@
                         <h3 class="mb-2"><a href="{{ route('frontend.posts.show' , $post->id) }}">{{ $post->title }}</a></h3>
                         <div class="meta-wrap">
                             <p class="meta">
-                                <span><i class="icon-calendar mr-2"></i>{{ $post->created_at }}</span>
+                                <span><i class="icon-calendar mr-2"></i>{{ \Hekmatinasser\Verta\Verta::instance($post->created_at)->formatDifference(\Hekmatinasser\Verta\Verta::today('Asia/Tehran'))  }}</span>
                                 <span><a href="{{ route('frontend.posts.show' , $post->id) }}"><i class="icon-folder-o mr-2"></i>{{ $post->category->title }}</a></span>
                                 <span><i class="icon-comment2 mr-2"></i>5 Comment</span>
                             </p>
@@ -48,5 +48,5 @@
 @endsection
 
 @section('sidebar')
-    @include('partials.sidebar' , ['categories'=>$categories])
+    @include('partials.sidebar' , ['categories'=>$categories , 'recent_posts'=>$recent_posts])
 @endsection
