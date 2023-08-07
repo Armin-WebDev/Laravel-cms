@@ -21,6 +21,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('posts/{slug}' , '\App\Http\Controllers\Frontend\PostController@show')->name('frontend.posts.show');
+
 Route::group(['middleware'=>'Admin'] , function (){
     Route::resource('users' ,\App\Http\Controllers\Admin\AdminUserController::class );
     Route::resource('posts' ,\App\Http\Controllers\Admin\AdminPostController::class );
@@ -31,7 +33,7 @@ Route::group(['middleware'=>'Admin'] , function (){
 });
 
 Route::get('/' , '\App\Http\Controllers\Frontend\MainController@index');
-Route::get('posts/{id}' , '\App\Http\Controllers\Frontend\PostController@show')->name('frontend.posts.show');
+
 
 
 
