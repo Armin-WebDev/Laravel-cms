@@ -22,4 +22,10 @@ class MainController extends Controller
             ->get();
         return view('frontend.main.index' , compact(['posts' , 'categories' , 'recent_posts']));
     }
+
+    public function about()
+    {
+
+        return view('frontend.main.about');
+    }
 }

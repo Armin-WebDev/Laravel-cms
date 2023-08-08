@@ -24,9 +24,9 @@
         <div class="block-21 mb-4 d-flex">
             <a class="blog-img mr-4" style="background-image: url({{$recent_post->photo->path}});"></a>
             <div class="text">
-                <h3 class="heading"><a href="{{ route('frontend.posts.show' , $post->slug) }}">{{ $recent_post->title }}</a></h3>
+                <h3 class="heading"><a href="{{ route('frontend.posts.show' , $recent_post->slug) }}">{{ $recent_post->title }}</a></h3>
                 <div class="meta">
-                    <div><a href="#"><span class="icon-calendar"></span> {{\Hekmatinasser\Verta\Verta::instance($post->created_at)->formatDifference(\Hekmatinasser\Verta\Verta::today('Asia/Tehran')) }}</a></div>
+                    <div><a href="#"><span class="icon-calendar"></span> {{\Hekmatinasser\Verta\Verta::instance($recent_post->created_at)->formatDifference(\Hekmatinasser\Verta\Verta::today('Asia/Tehran')) }}</a></div>
                     <div><a href="#"><span class="icon-person"></span> {{$recent_post->user->name}}</a></div>
                     <div><a href="#"><span class="icon-chat"></span> 19</a></div>
                 </div>
