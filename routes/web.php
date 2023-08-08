@@ -22,6 +22,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('posts/{slug}' , '\App\Http\Controllers\Frontend\PostController@show')->name('frontend.posts.show');
+Route::get('search' , '\App\Http\Controllers\Frontend\PostController@searchTitle')->name('frontend.posts.search');
 
 Route::group(['middleware'=>'Admin'] , function (){
     Route::resource('users' ,\App\Http\Controllers\Admin\AdminUserController::class );

@@ -1,12 +1,15 @@
 <div class="col-xl-4 sidebar ftco-animate bg-light pt-5">
     <div class="sidebar-box pt-md-4">
-        <form action="#" class="search-form">
-            <div class="form-group">
-                <span class="icon icon-search"></span>
-                <input type="text" class="form-control" placeholder="Type a keyword and hit enter">
-            </div>
-        </form>
-    </div>
+
+        {!! Form::open(['method' => 'GET' , 'action' => '\App\Http\Controllers\Frontend\PostController@searchTitle' ]) !!}
+        <div class="form-group">
+            {!! Form::text('title' , null , ['class'=>'form-control', 'placeholder'=>'کلمه مورد نظر را برای جست و جو وارد کنید' ]) !!}
+
+        </div>
+        {!! Form::close() !!}
+
+
+
     <div class="sidebar-box ftco-animate">
         <h3 class="sidebar-heading">Categories</h3>
         <ul class="categories">
@@ -21,7 +24,7 @@
         <div class="block-21 mb-4 d-flex">
             <a class="blog-img mr-4" style="background-image: url({{$recent_post->photo->path}});"></a>
             <div class="text">
-                <h3 class="heading"><a href="#">{{ $recent_post->title }}</a></h3>
+                <h3 class="heading"><a href="{{ route('frontend.posts.show' , $post->slug) }}">{{ $recent_post->title }}</a></h3>
                 <div class="meta">
                     <div><a href="#"><span class="icon-calendar"></span> {{\Hekmatinasser\Verta\Verta::instance($post->created_at)->formatDifference(\Hekmatinasser\Verta\Verta::today('Asia/Tehran')) }}</a></div>
                     <div><a href="#"><span class="icon-person"></span> {{$recent_post->user->name}}</a></div>
