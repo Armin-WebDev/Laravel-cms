@@ -32,6 +32,8 @@ Route::group(['middleware'=>'Admin'] , function (){
     Route::resource('posts' ,\App\Http\Controllers\Admin\AdminPostController::class );
     Route::resource('categories' ,\App\Http\Controllers\Admin\AdminCategoryController::class );
     Route::resource('photos' ,\App\Http\Controllers\Admin\AdminPhotoController::class );
+    Route::get('comments' , '\App\Http\Controllers\Admin\AdminCommentController@index')->name('comments.index');
+    Route::patch('comments/{id}' , '\App\Http\Controllers\Admin\AdminCommentController@index@edit')->name('comments.edit');
     Route::get('dashboard' , '\App\Http\Controllers\Admin\AdminDashboardController@index')->name('dashboard.index');
 
 });
