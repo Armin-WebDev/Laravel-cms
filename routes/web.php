@@ -23,9 +23,9 @@ Auth::routes();
 
 Route::get('/' , '\App\Http\Controllers\Frontend\MainController@index');
 Route::get('about' , '\App\Http\Controllers\Frontend\MainController@about')->name('frontend.posts.about');
-
 Route::get('posts/{slug}' , '\App\Http\Controllers\Frontend\PostController@show')->name('frontend.posts.show');
 Route::get('search' , '\App\Http\Controllers\Frontend\PostController@searchTitle')->name('frontend.posts.search');
+Route::post('comments/{postId}' , '\App\Http\Controllers\Frontend\CommentController@store')->name('frontend.comments.store');
 
 Route::group(['middleware'=>'Admin'] , function (){
     Route::resource('users' ,\App\Http\Controllers\Admin\AdminUserController::class );
@@ -34,6 +34,8 @@ Route::group(['middleware'=>'Admin'] , function (){
     Route::resource('photos' ,\App\Http\Controllers\Admin\AdminPhotoController::class );
     Route::get('comments' , '\App\Http\Controllers\Admin\AdminCommentController@index')->name('comments.index');
     Route::patch('comments/{id}' , '\App\Http\Controllers\Admin\AdminCommentController@index@edit')->name('comments.edit');
+    Route::post('comments/actions/{id}' , '\App\Http\Controllers\Admin\AdminCommentController@actions')->name('comments.actions');
+
     Route::get('dashboard' , '\App\Http\Controllers\Admin\AdminDashboardController@index')->name('dashboard.index');
 
 });

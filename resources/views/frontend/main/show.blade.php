@@ -6,6 +6,11 @@
 
 @section('content')
     <div class="col-lg-8 px-md-5 py-5">
+        @if(session()->has('add_comment'))
+            <div class="alert alert-success">
+                <div>{{ session('add_comment') }}</div>
+            </div>
+        @endif
         <div class="row pt-md-4">
             <h1 class="mb-3">{{ $post->title }}</h1>
             <p>
@@ -108,28 +113,21 @@
                 </ul>
 
                 <div class="comment-form-wrap pt-5">
-                    <h3 class="mb-5">Leave a comment</h3>
-                    <form action="#" class="p-3 p-md-5 bg-light">
-                        <div class="form-group">
-                            <label for="name">Name *</label>
-                            <input type="text" class="form-control" id="name">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email *</label>
-                            <input type="email" class="form-control" id="email">
-                        </div>
-                        <div class="form-group">
-                            <label for="website">Website</label>
-                            <input type="url" class="form-control" id="website">
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea name="" id="message" cols="30" rows="10" class="form-control"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" value="Post Comment" class="btn py-3 px-4 btn-primary">
-                        </div>
-                    </form>
+                    <h3 class="mb-5">نظر خود را ثبت کنید</h3>
+
+                    {!! Form::open(['method' => 'POST' , 'route' => ['frontend.comments.store' , $post->id]]) !!}
+                    <div class="form-group">
+                        <label class="control-label" for="status">توضیحات نظر</label>
+                        {!! Form::textarea('description' , null , ['class'=>'form-control']) !!}
+                        @error('description') <span class="text-danger"> {{$message}}</span> @enderror
+                    </div>
+
+                    <div class="form-group">
+                        {!! Form::submit('ثبت' , ['class'=>'btn btn-success']) !!}
+                    </div>
+                    {!! Form::close() !!}
+
+
                 </div>
             </div>
         </div>
