@@ -16,4 +16,22 @@ class AdminCommentController extends Controller
 
         return view('admin.comments.index' , compact(['comments']));
     }
+
+    public function actions(Request $request , $id)
+    {
+        if ($request->has('action')){
+            if ($request->input('action') == 'approved'){
+                $comment = Comment::findOrFail($id);
+                $comment->status = 1;
+                $comment->save();
+                session()->flash('comment_approved' , 'نظر کاربر با موفقیت تایید شد');
+            }else{
+                $comment = Comment::findOrFail($id);
+                $comment->status = 0;
+                $comment->save();
+                session()->flash('comment_rejected' , 'نظر کاربر رد شد');
+            }
+        }
+        return redirect('comments/');
+    }
 }

@@ -14,7 +14,12 @@ class PostController extends Controller
     public function show($slug)
     {
 
-        $post = Post::with('user' , 'category' , 'photo')
+        $post = Post::with(['user' , 'category' , 'photo',
+            'comment'=>function($q)
+            {
+                $q->where('status' , 1);
+            }
+        ])
             ->where('slug' , $slug)
             ->where('status' , 1)
             ->first();

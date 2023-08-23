@@ -13,7 +13,7 @@
                 <div class="blog-entry ftco-animate d-md-flex">
                     <a href="{{ route('frontend.posts.show' , $post->slug) }}" class="img img-2" style="background-image: url({{ $post->photo ? $post->photo->path : "https://www.placehold.it/900x300" }});"></a>
                     <div class="text text-2 pl-md-4">
-                        <h3 class="mb-2"><a href="{{ route('frontend.posts.show' , $post->slug) }}">{{ $post->title }}</a></h3>
+                        <h3 class="mb-2"><a href="{{ route('frontend.posts.show' , $post->slug) }}" style="text-decoration: none">{{ $post->title }}</a></h3>
                         <div class="meta-wrap">
                             <p class="meta">
                                 <span><i class="icon-calendar mr-2"></i>{{ \Hekmatinasser\Verta\Verta::instance($post->created_at)->formatDifference(\Hekmatinasser\Verta\Verta::today('Asia/Tehran'))  }}</span>

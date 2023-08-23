@@ -38,17 +38,19 @@
             <div class="pt-5 mt-5">
                 <h3 class="mb-5 font-weight-bold">6 Comments</h3>
                 <ul class="comment-list">
+                    @foreach($post->comment as $comment)
                     <li class="comment">
                         <div class="vcard bio">
-                            <img src="images/person_1.jpg" alt="Image placeholder">
+                            <img src="{{ asset('images/person.png') }}" alt="">
                         </div>
                         <div class="comment-body">
-                            <h3>John Doe</h3>
-                            <div class="meta">October 03, 2018 at 2:21pm</div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
+                            <h3>Guest</h3>
+                            <div class="meta">{{ $comment->created_at }}</div>
+                            <p>{{ $comment->description }}</p>
                             <p><a href="#" class="reply">Reply</a></p>
                         </div>
                     </li>
+                    @endforeach
                     <li class="comment">
                         <div class="vcard bio">
                             <img src="images/person_1.jpg" alt="Image placeholder">
